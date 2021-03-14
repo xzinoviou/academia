@@ -1,6 +1,5 @@
-package com.xzinoviou.academia.studentservice.controller;
+package com.xzinoviou.academia.resultservice.controller;
 
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,18 +16,18 @@ import java.util.stream.IntStream;
  * Created on 15/3/21.
  */
 @RestController
-@RequestMapping("/students")
-public class StudentController {
+@RequestMapping("/results")
+public class ResultController {
 
     @GetMapping
-    public List<Map<String, Integer>> getStudents() {
+    public List<Map<String, Integer>> getResults() {
         return createMap();
     }
 
     private List<Map<String, Integer>> createMap() {
         return IntStream.range(0, 5).mapToObj(i -> {
             Map<String, Integer> map = new HashMap<>();
-            map.put("Student " + String.valueOf(i), i);
+            map.put("Result " + String.valueOf(i), i);
             return map;
         }).collect(Collectors.toList());
     }
