@@ -1,0 +1,5 @@
+config-server
+eureka-server
+student-service
+course-service
+result-service
