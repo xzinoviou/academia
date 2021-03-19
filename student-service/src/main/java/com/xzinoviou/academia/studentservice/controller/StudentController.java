@@ -1,15 +1,14 @@
 package com.xzinoviou.academia.studentservice.controller;
 
+import com.xzinoviou.academia.studentservice.domain.jpa.Student;
+import com.xzinoviou.academia.studentservice.domain.request.StudentCreateRequest;
+import com.xzinoviou.academia.studentservice.service.jpa.StudentService;
+import com.xzinoviou.academia.studentservice.service.manager.StudentManager;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 /**
  * Author : xzinoviou.
@@ -20,16 +19,32 @@ import java.util.stream.IntStream;
 @RequestMapping("/students")
 public class StudentController {
 
-    @GetMapping
-    public List<Map<String, Integer>> getStudents() {
-        return createMap();
+    private final StudentService studentService;
+    private final StudentManager studentManager;
+
+    public StudentController(StudentService studentService, StudentManager studentManager) {
+        this.studentService = studentService;
+        this.studentManager = studentManager;
     }
 
-    private List<Map<String, Integer>> createMap() {
-        return IntStream.range(0, 5).mapToObj(i -> {
-            Map<String, Integer> map = new HashMap<>();
-            map.put("Student " + String.valueOf(i), i);
-            return map;
-        }).collect(Collectors.toList());
+    @GetMapping
+    public ResponseEntity<List<Student>> getAllStudents() {
+        return ResponseEntity.ok(studentService.getAllStudents());
     }
+
+    @GetMapping("/id/{id}")
+    public ResponseEntity<Student> getStudentById(@PathVariable("id") Long id) {
+        return ResponseEntity.ok(studentService.getStudentById(id));
+    }
+
+    @GetMapping("/sin/{sin}")
+    public ResponseEntity<Student> getStudentBySin(@PathVariable("sin") String sin) {
+        return ResponseEntity.ok(studentService.getStudentBySin(sin));
+    }
+
+    @PostMapping
+    public ResponseEntity<Student> saveStudent(@RequestBody StudentCreateRequest request) {
+        return new ResponseEntity<>(studentManager.saveStudent(request), HttpStatus.CREATED);
+    }
+
 }

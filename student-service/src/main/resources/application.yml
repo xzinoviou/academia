@@ -1,0 +1,32 @@
+
+#logging config
+logging:
+  level:
+    org:
+      springframework:
+        web: DEBUG
+
+spring:
+  #mysql
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: dev
+    password: dev
+    url: jdbc:mysql://localhost:3301/academia_student_db
+    #?useSSL=false&allowPublicKeyRetrieval=false
+    #jpa -> hibernate
+
+  #jpa
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        format_sql: true
+
+#  flyway:
+#    enabled: true
+#    password: dev
+#    user: dev
