@@ -1,4 +1,4 @@
-package com.xzinoviou.academia.studentservice.service.manager;
+package com.xzinoviou.academia.studentservice.manager;
 
 import com.xzinoviou.academia.studentservice.domain.jpa.Student;
 import com.xzinoviou.academia.studentservice.domain.request.StudentCreateRequest;

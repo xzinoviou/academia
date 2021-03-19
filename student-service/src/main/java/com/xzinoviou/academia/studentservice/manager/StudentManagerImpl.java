@@ -1,9 +1,9 @@
-package com.xzinoviou.academia.studentservice.service.manager;
+package com.xzinoviou.academia.studentservice.manager;
 
 import com.xzinoviou.academia.studentservice.domain.jpa.Student;
 import com.xzinoviou.academia.studentservice.domain.request.StudentCreateRequest;
 import com.xzinoviou.academia.studentservice.mapper.EntityMapper;
-import com.xzinoviou.academia.studentservice.service.jpa.StudentService;
+import com.xzinoviou.academia.studentservice.service.StudentService;
 import org.springframework.stereotype.Service;
 
 /**

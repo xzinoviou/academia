@@ -1,7 +1,8 @@
-package com.xzinoviou.academia.studentservice.service.jpa;
+package com.xzinoviou.academia.studentservice.service;
 
 import com.xzinoviou.academia.studentservice.domain.jpa.Student;
 import com.xzinoviou.academia.studentservice.repository.StudentRepository;
+import com.xzinoviou.academia.studentservice.service.StudentService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

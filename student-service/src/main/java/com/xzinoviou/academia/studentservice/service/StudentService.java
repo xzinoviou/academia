@@ -1,4 +1,4 @@
-package com.xzinoviou.academia.studentservice.service.jpa;
+package com.xzinoviou.academia.studentservice.service;
 
 import com.xzinoviou.academia.studentservice.domain.jpa.Student;
 

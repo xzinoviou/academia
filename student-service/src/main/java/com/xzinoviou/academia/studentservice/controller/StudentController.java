@@ -2,8 +2,8 @@ package com.xzinoviou.academia.studentservice.controller;
 
 import com.xzinoviou.academia.studentservice.domain.jpa.Student;
 import com.xzinoviou.academia.studentservice.domain.request.StudentCreateRequest;
-import com.xzinoviou.academia.studentservice.service.jpa.StudentService;
-import com.xzinoviou.academia.studentservice.service.manager.StudentManager;
+import com.xzinoviou.academia.studentservice.service.StudentService;
+import com.xzinoviou.academia.studentservice.manager.StudentManager;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
