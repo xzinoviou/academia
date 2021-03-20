@@ -46,10 +46,25 @@ services:
     networks:
       - result-net
 
+  academia-backoffice-db:
+    image: mysql:8.0.16
+    container_name: academia-backoffice-db
+    ports:
+      - '3310:3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: dev
+      MYSQL_PASSWORD: dev
+      MYSQL_DATABASE: academia_backoffice_db
+    volumes:
+      - academia-backoffice-data:/var/lib/mysql
+    networks:
+      - backoffice-net
 volumes:
   academia-student-data:
   academia-course-data:
   academia-result-data:
+  academia-backoffice-data:
 
 networks:
   student-net:
@@ -57,5 +72,7 @@ networks:
   course-net:
     driver: bridge
   result-net:
+    driver: bridge
+  backoffice-net:
     driver: bridge
 

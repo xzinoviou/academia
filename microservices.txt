@@ -3,3 +3,5 @@ eureka-server
 student-service
 course-service
 result-service
+back-office
+
