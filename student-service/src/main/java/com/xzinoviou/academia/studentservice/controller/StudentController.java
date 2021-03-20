@@ -2,8 +2,7 @@ package com.xzinoviou.academia.studentservice.controller;
 
 import com.xzinoviou.academia.studentservice.domain.jpa.Student;
 import com.xzinoviou.academia.studentservice.domain.request.StudentCreateRequest;
-import com.xzinoviou.academia.studentservice.service.StudentService;
-import com.xzinoviou.academia.studentservice.manager.StudentManager;
+import com.xzinoviou.academia.studentservice.management.StudentManagement;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,27 +18,25 @@ import java.util.List;
 @RequestMapping("/students")
 public class StudentController {
 
-    private final StudentService studentService;
-    private final StudentManager studentManager;
+    private final StudentManagement studentManager;
 
-    public StudentController(StudentService studentService, StudentManager studentManager) {
-        this.studentService = studentService;
+    public StudentController(StudentManagement studentManager) {
         this.studentManager = studentManager;
     }
 
     @GetMapping
     public ResponseEntity<List<Student>> getAllStudents() {
-        return ResponseEntity.ok(studentService.getAllStudents());
+        return ResponseEntity.ok(studentManager.getAllStudents());
     }
 
     @GetMapping("/id/{id}")
     public ResponseEntity<Student> getStudentById(@PathVariable("id") Long id) {
-        return ResponseEntity.ok(studentService.getStudentById(id));
+        return ResponseEntity.ok(studentManager.getStudentById(id));
     }
 
     @GetMapping("/sin/{sin}")
     public ResponseEntity<Student> getStudentBySin(@PathVariable("sin") String sin) {
-        return ResponseEntity.ok(studentService.getStudentBySin(sin));
+        return ResponseEntity.ok(studentManager.getStudentBySin(sin));
     }
 
     @PostMapping
