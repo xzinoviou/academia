@@ -1,7 +1,4 @@
-package com.xzinoviou.academia.studentservice.domain.request;
-
-import lombok.Data;
-import lombok.Getter;
+package com.xzinoviou.academia.resultservice.domain.request.student;
 
 import java.time.OffsetDateTime;
 
@@ -10,8 +7,6 @@ import java.time.OffsetDateTime;
  * Project : student-service.
  * Created on 20/3/21.
  */
-@Data
-@Getter
 public class StudentCreateRequest {
 
     private String firstName;

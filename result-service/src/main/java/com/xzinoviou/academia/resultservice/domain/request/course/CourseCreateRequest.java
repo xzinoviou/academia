@@ -1,4 +1,4 @@
-package com.xzinoviou.academia.courseservice.domain.request;
+package com.xzinoviou.academia.resultservice.domain.request.course;
 
 import lombok.Getter;
 
@@ -13,5 +13,4 @@ public class CourseCreateRequest {
     private String title;
 
     private boolean mandatory;
-
 }

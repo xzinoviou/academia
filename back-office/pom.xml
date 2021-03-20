@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.xzinoviou.academia</groupId>
-    <artifactId>result-service</artifactId>
+    <artifactId>back-office</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>result-service</name>
-    <description>Result Service for Academia Project</description>
+    <name>back-office</name>
+    <description>Back Office for Academia Project</description>
     <properties>
         <java.version>11</java.version>
         <spring-cloud.version>2020.0.1</spring-cloud.version>

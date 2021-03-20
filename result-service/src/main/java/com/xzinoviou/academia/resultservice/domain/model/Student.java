@@ -1,7 +1,6 @@
-package com.xzinoviou.academia.studentservice.domain.request;
+package com.xzinoviou.academia.resultservice.domain.model;
 
 import lombok.Data;
-import lombok.Getter;
 
 import java.time.OffsetDateTime;
 
@@ -11,8 +10,11 @@ import java.time.OffsetDateTime;
  * Created on 20/3/21.
  */
 @Data
-@Getter
-public class StudentCreateRequest {
+public class Student {
+
+    private Long id;
+
+    private String sin;
 
     private String firstName;
 
@@ -22,4 +24,5 @@ public class StudentCreateRequest {
 
     private OffsetDateTime birthDate;
 
+    private OffsetDateTime registrationDate;
 }
