@@ -1,4 +1,4 @@
-package com.xzinoviou.academia.studentservice.controller;
+package com.xzinoviou.academia.backoffice.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,8 +16,8 @@ import java.time.OffsetDateTime;
  * Created on 20/3/21.
  */
 @RestController
-@RequestMapping("/time")
-public class TimeController {
+@RequestMapping("/back-office/date-time/")
+public class DateTimeController {
 
     @GetMapping("/offset-date-time")
     public ResponseEntity<OffsetDateTime> offsetDateTimeNow() {
