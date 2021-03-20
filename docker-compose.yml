@@ -46,25 +46,23 @@ services:
     networks:
       - result-net
 
-  academia-backoffice-db:
-    image: mysql:8.0.16
-    container_name: academia-backoffice-db
+  academia-backoffice-redis-cache:
+    image: redis
+    container_name: academia-redis-cache
     ports:
-      - '3310:3306'
+      - "6379:6379"
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_USER: dev
-      MYSQL_PASSWORD: dev
-      MYSQL_DATABASE: academia_backoffice_db
+      - "ALLOW_EMPTY_PASSWORD=yes"
     volumes:
-      - academia-backoffice-data:/var/lib/mysql
+      - academia-backoffice-redis-data
     networks:
       - backoffice-net
+
 volumes:
   academia-student-data:
   academia-course-data:
   academia-result-data:
-  academia-backoffice-data:
+  academia-backoffice-redis-data:
 
 networks:
   student-net:

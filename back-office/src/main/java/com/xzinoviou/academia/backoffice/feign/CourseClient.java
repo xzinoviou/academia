@@ -9,24 +9,28 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * Author : xzinoviou.
  * Project : student-service.
  * Created on 20/3/21.
  */
-@FeignClient("courseservice")
+@FeignClient(name = "courseservice", path = "/courses")
 public interface CourseClient {
 
-    @GetMapping("/courses")
+    @GetMapping
     List<Course> getAllCourses();
 
-    @GetMapping("/courses/id/{id}")
+    @GetMapping("/id/{id}")
     Course getCourseById(@PathVariable("id") Long id);
 
-    @GetMapping("/courses/cin/{cin}")
+    @GetMapping("/cin/{cin}")
     Course getCourseByCin(@PathVariable("cin") String cin);
 
-    @PostMapping("/courses")
+    @PostMapping
     Course saveCourse(@RequestBody CourseCreateRequest request);
+
+    @PostMapping("/search")
+    List<Course> getCoursesByIdIn(@RequestBody Set<Long> ids);
 }

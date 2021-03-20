@@ -5,10 +5,7 @@ import com.xzinoviou.academia.resultservice.domain.request.result.ResultCreateRe
 import com.xzinoviou.academia.resultservice.management.ResultManagement;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -33,22 +30,22 @@ public class ResultController {
     }
 
     @GetMapping("/id/{id}")
-    public ResponseEntity<Result> getResultById(Long id) {
+    public ResponseEntity<Result> getResultById(@PathVariable("id") Long id) {
         return ResponseEntity.ok(resultManagement.getResultById(id));
     }
 
     @GetMapping("/student/id/{id}")
-    public ResponseEntity<List<Result>> getResultsByStudentId(Long studentId) {
+    public ResponseEntity<List<Result>> getResultsByStudentId(@PathVariable("id") Long studentId) {
         return ResponseEntity.ok(resultManagement.getResultsByStudentId(studentId));
     }
 
     @GetMapping("/course/id/{id}")
-    public ResponseEntity<List<Result>> getResultsByCourseId(Long courseId) {
+    public ResponseEntity<List<Result>> getResultsByCourseId(@PathVariable("id") Long courseId) {
         return ResponseEntity.ok(resultManagement.getResultsByCourseId(courseId));
     }
 
     @PostMapping
-    public ResponseEntity<Result> saveResult(ResultCreateRequest request) {
+    public ResponseEntity<Result> saveResult(@RequestBody ResultCreateRequest request) {
         return new ResponseEntity<>(resultManagement.saveResult(request), HttpStatus.CREATED);
     }
 

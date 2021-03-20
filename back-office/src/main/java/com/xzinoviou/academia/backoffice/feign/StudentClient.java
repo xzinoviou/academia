@@ -15,19 +15,19 @@ import java.util.List;
  * Project : student-service.
  * Created on 20/3/21.
  */
-@FeignClient("studentservice")
+@FeignClient(name = "studentservice",path = "/students")
 public interface StudentClient {
 
-    @GetMapping("/students")
+    @GetMapping
     List<Student> getAllStudents();
 
-    @GetMapping("/students/id/{id}")
+    @GetMapping("/id/{id}")
     Student getStudentById(@PathVariable("id") Long id);
 
-    @GetMapping("/students/sin/{sin}")
+    @GetMapping("/sin/{sin}")
     Student getStudentBySin(@PathVariable("sin") String sin);
 
-    @PostMapping("/students")
+    @PostMapping
     Student saveStudent(@RequestBody StudentCreateRequest request);
 }
 

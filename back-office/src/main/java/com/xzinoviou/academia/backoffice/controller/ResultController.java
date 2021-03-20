@@ -5,10 +5,7 @@ import com.xzinoviou.academia.backoffice.domain.request.result.ResultCreateReque
 import com.xzinoviou.academia.backoffice.feign.ResultClient;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -33,22 +30,22 @@ public class ResultController {
     }
 
     @GetMapping("/id/{id}")
-    public ResponseEntity<Result> getResultById(Long id) {
+    public ResponseEntity<Result> getResultById(@PathVariable("id") Long id) {
         return ResponseEntity.ok(resultClient.getResultById(id));
     }
 
     @GetMapping("/student/id/{id}")
-    public ResponseEntity<List<Result>> getResultsByStudentId(Long studentId) {
-        return ResponseEntity.ok(resultClient.getResultsByStudentId(studentId));
+    public ResponseEntity<List<Result>> getResultsByStudentId(@PathVariable("id") Long id) {
+        return ResponseEntity.ok(resultClient.getResultsByStudentId(id));
     }
 
     @GetMapping("/course/id/{id}")
-    public ResponseEntity<List<Result>> getResultsByCourseId(Long courseId) {
-        return ResponseEntity.ok(resultClient.getResultsByCourseId(courseId));
+    public ResponseEntity<List<Result>> getResultsByCourseId(@PathVariable("id") Long id) {
+        return ResponseEntity.ok(resultClient.getResultsByCourseId(id));
     }
 
     @PostMapping
-    public ResponseEntity<Result> saveResult(ResultCreateRequest request) {
+    public ResponseEntity<Result> saveResult(@RequestBody ResultCreateRequest request) {
         return new ResponseEntity<>(resultClient.saveResult(request), HttpStatus.CREATED);
     }
 }

@@ -21,7 +21,7 @@ public class DateTimeController {
 
     @GetMapping("/offset-date-time")
     public ResponseEntity<OffsetDateTime> offsetDateTimeNow() {
-        return ResponseEntity.ok(OffsetDateTime.from(Instant.now()));
+        return ResponseEntity.ok(OffsetDateTime.now());
     }
 
     @GetMapping("/instant")

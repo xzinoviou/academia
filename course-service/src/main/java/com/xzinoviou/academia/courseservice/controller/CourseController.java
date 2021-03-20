@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * Author : xzinoviou.
@@ -42,5 +43,10 @@ public class CourseController {
     @PostMapping
     public ResponseEntity<Course> saveCourse(@RequestBody CourseCreateRequest request) {
         return new ResponseEntity<>(courseManagement.saveCourse(request), HttpStatus.CREATED);
+    }
+
+    @PostMapping("/search")
+    public ResponseEntity<List<Course>> getCoursesByIdIn(@RequestBody Set<Long> ids) {
+        return ResponseEntity.ok(courseManagement.getCoursesByIdIn(ids));
     }
 }

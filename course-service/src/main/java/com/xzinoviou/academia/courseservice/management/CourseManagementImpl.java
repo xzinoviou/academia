@@ -7,6 +7,7 @@ import com.xzinoviou.academia.courseservice.service.CourseService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * Author : xzinoviou.
@@ -44,5 +45,10 @@ public class CourseManagementImpl implements CourseManagement {
         Course course = courseMapper.convertToEntity(request);
         course.setCin("COU-" + courseService.getNextCourseIdSequencer());
         return courseService.saveCourse(course);
+    }
+
+    @Override
+    public List<Course> getCoursesByIdIn(Set<Long> ids) {
+        return courseService.getCoursesByIdIn(ids);
     }
 }

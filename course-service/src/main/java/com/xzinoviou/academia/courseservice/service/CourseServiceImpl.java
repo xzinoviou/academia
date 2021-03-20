@@ -5,6 +5,7 @@ import com.xzinoviou.academia.courseservice.repository.CourseRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * Author : xzinoviou.
@@ -45,5 +46,10 @@ public class CourseServiceImpl implements CourseService {
     @Override
     public Long getNextCourseIdSequencer() {
         return courseRepository.findLastCourseInserted().orElseGet(() -> 0L) + 1L;
+    }
+
+    @Override
+    public List<Course> getCoursesByIdIn(Set<Long> ids) {
+        return courseRepository.findByIdIn(ids);
     }
 }

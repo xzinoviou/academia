@@ -3,6 +3,7 @@ package com.xzinoviou.academia.courseservice.service;
 import com.xzinoviou.academia.courseservice.domain.jpa.Course;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * Author : xzinoviou.
@@ -20,4 +21,6 @@ public interface CourseService {
     Course saveCourse(Course course);
 
     Long getNextCourseIdSequencer();
+
+    List<Course> getCoursesByIdIn(Set<Long> ids);
 }

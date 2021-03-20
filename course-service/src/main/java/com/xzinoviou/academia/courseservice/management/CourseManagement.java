@@ -4,6 +4,7 @@ import com.xzinoviou.academia.courseservice.domain.jpa.Course;
 import com.xzinoviou.academia.courseservice.domain.request.CourseCreateRequest;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * Author : xzinoviou.
@@ -19,5 +20,7 @@ public interface CourseManagement {
     List<Course> getAllCourses();
 
     Course saveCourse(CourseCreateRequest request);
+
+    List<Course> getCoursesByIdIn(Set<Long> ids);
 
 }

@@ -4,7 +4,9 @@ import com.xzinoviou.academia.backoffice.domain.model.Result;
 import com.xzinoviou.academia.backoffice.domain.request.result.ResultCreateRequest;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
@@ -13,21 +15,21 @@ import java.util.List;
  * Project : student-service.
  * Created on 20/3/21.
  */
-@FeignClient("resultservice")
+@FeignClient(name = "resultservice",path = "/results")
 public interface ResultClient {
 
-    @GetMapping("/results")
+    @GetMapping
     List<Result> getAllResults();
 
-    @GetMapping("/results/id/{id}")
-    Result getResultById(Long id);
+    @GetMapping("/id/{id}")
+    Result getResultById(@PathVariable("id") Long id);
 
-    @GetMapping("/results/student/id/{id}")
-    List<Result> getResultsByStudentId(Long studentId);
+    @GetMapping("/student/id/{id}")
+    List<Result> getResultsByStudentId(@PathVariable("id") Long studentId);
 
-    @GetMapping("/results/course/id/{id}")
-    List<Result> getResultsByCourseId(Long courseId);
+    @GetMapping("/course/id/{id}")
+    List<Result> getResultsByCourseId(@PathVariable("id") Long courseId);
 
-    @PostMapping("/results")
-    Result saveResult(ResultCreateRequest request);
+    @PostMapping
+    Result saveResult(@RequestBody ResultCreateRequest request);
 }
