@@ -30,6 +30,7 @@ public class StudentMapperImpl implements StudentMapper {
     public StudentDto mapToDto(Student student) {
         return StudentDto.builder()
                 .id(student.getId())
+                .sin(student.getSin())
                 .firstName(student.getFirstName())
                 .lastName(student.getLastName())
                 .email(student.getEmail())
