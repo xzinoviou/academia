@@ -1,9 +1,11 @@
 package com.xzinoviou.academia.courseservice.domain.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.OffsetDateTime;
 
@@ -24,6 +26,8 @@ public class CourseDto {
 
     private String title;
 
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime creationDate;
 
     private boolean mandatory;

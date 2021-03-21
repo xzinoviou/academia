@@ -2,6 +2,7 @@ package com.xzinoviou.academia.backoffice.domain.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.time.OffsetDateTime;
@@ -20,7 +21,9 @@ public class CourseDto implements Serializable {
 
     private String title;
 
-    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSx")
+    //@JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSx")
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime creationDate;
 
     private boolean mandatory;

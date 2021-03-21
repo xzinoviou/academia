@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 /**
  * Author : xzinoviou.
@@ -22,7 +23,7 @@ public class ResultGpa implements Serializable {
     private String lastName;
     private String sin;
     private int totalCourses;
-    private double gpa;
+    private BigDecimal gpa;
     private int totalMandatory;
     private int totalElective;
 }

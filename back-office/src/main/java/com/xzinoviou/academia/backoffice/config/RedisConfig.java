@@ -46,15 +46,15 @@ public class RedisConfig {
         return redisTemplate;
     }
 
-    @Bean
-    public CacheManager cacheManager(RedisConnectionFactory redisConnectionFactory) {
-        RedisCacheConfiguration config = RedisCacheConfiguration.defaultCacheConfig()
-                .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(RedisSerializer.json()))
-                .entryTtl(Duration.of(3600, ChronoUnit.SECONDS))
-                .disableCachingNullValues();
-
-        return RedisCacheManager.RedisCacheManagerBuilder.fromConnectionFactory(redisConnectionFactory)
-                .cacheDefaults(config).build();
-    }
+//    @Bean
+//    public CacheManager cacheManager(RedisConnectionFactory redisConnectionFactory) {
+//        RedisCacheConfiguration config = RedisCacheConfiguration.defaultCacheConfig()
+//                .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(RedisSerializer.json()))
+//                .entryTtl(Duration.of(3600, ChronoUnit.SECONDS))
+//                .disableCachingNullValues();
+//
+//        return RedisCacheManager.RedisCacheManagerBuilder.fromConnectionFactory(redisConnectionFactory)
+//                .cacheDefaults(config).build();
+//    }
 
 }
