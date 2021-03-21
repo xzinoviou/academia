@@ -1,6 +1,9 @@
 package com.xzinoviou.academia.studentservice.domain.jpa;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.OffsetDateTime;
@@ -12,18 +15,19 @@ import java.time.OffsetDateTime;
  */
 
 
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "STUDENT")
+@Table(name = "STUDENT",schema = "academia_student_schema")
 public class Student {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "STUDENT_ID_SEQ")
+    @SequenceGenerator(name = "STUDENT_ID_SEQ", sequenceName = "STUDENT_ID_SEQ",
+            schema = "academia_student_schema",allocationSize = 1)
+    @Column(name = "ID", nullable = false)
     private Long id;
 
     @Column(name = "STUDENT_IDENTIFICATION_NUMBER", nullable = false, unique = true, length = 15)
@@ -38,10 +42,10 @@ public class Student {
     @Column(name = "EMAIL", length = 100)
     private String email;
 
-    @Column(name = "BIRTH_DATE")
+    @Column(name = "BIRTH_DATE", columnDefinition = "TIMESTAMP WITH TIME ZONE")
     private OffsetDateTime birthDate;
 
-    @Column(name = "REGISTRATION_DATE")
+    @Column(name = "REGISTRATION_DATE", columnDefinition = "TIMESTAMP WITH TIME ZONE")
     private OffsetDateTime registrationDate;
 
 }

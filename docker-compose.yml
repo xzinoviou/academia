@@ -1,76 +1,78 @@
 version: '3.7'
 
 services:
-  academia-student-db:
-    image: mysql:8.0.16
+
+  student-db:
+    image: postgres:12.2
+    hostname: student-postgres
     container_name: academia-student-db
-    ports:
-      - '3301:3306'
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_USER: dev
-      MYSQL_PASSWORD: dev
-      MYSQL_DATABASE: academia_student_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: academia-student-db
+    ports:
+      - '5433:5432'
     volumes:
-      - academia-student-data:/var/lib/mysql
+      - student-postgres-data:/var/lib/postgresql/data
     networks:
-      - student-net
+      - academia-student-net
 
-  academia-course-db:
-    image: mysql:8.0.16
+  course-db:
+    image: postgres:12.2
+    hostname: course-postgres
     container_name: academia-course-db
-    ports:
-      - '3302:3306'
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_USER: dev
-      MYSQL_PASSWORD: dev
-      MYSQL_DATABASE: academia_course_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: academia-course-db
+    ports:
+      - '5434:5432'
     volumes:
-      - academia-course-data:/var/lib/mysql
+      - course-postgres-data:/var/lib/postgresql/data
     networks:
-      - course-net
+      - academia-course-net
 
-  academia-result-db:
-    image: mysql:8.0.16
+  result-db:
+    image: postgres:12.2
+    hostname: result-postgres
     container_name: academia-result-db
-    ports:
-      - '3303:3306'
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_USER: dev
-      MYSQL_PASSWORD: dev
-      MYSQL_DATABASE: academia_result_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: academia-result-db
+    ports:
+      - '5435:5432'
     volumes:
-      - academia-result-data:/var/lib/mysql
+      - result-postgres-data:/var/lib/postgresql/data
     networks:
-      - result-net
+      - academia-result-net
 
   academia-backoffice-redis-cache:
     image: redis
+    hostname: backoffice-redis
     container_name: academia-redis-cache
     ports:
       - "6379:6379"
     environment:
       - "ALLOW_EMPTY_PASSWORD=yes"
     volumes:
-      - academia-backoffice-redis-data
+      - backoffice-redis-data
     networks:
-      - backoffice-net
+      - academia-backoffice-net
 
 volumes:
-  academia-student-data:
-  academia-course-data:
-  academia-result-data:
-  academia-backoffice-redis-data:
+  student-postgres-data:
+  course-postgres-data:
+  result-postgres-data:
+  backoffice-redis-data:
 
 networks:
-  student-net:
+  academia-student-net:
     driver: bridge
-  course-net:
+  academia-course-net:
     driver: bridge
-  result-net:
+  academia-result-net:
     driver: bridge
-  backoffice-net:
+  academia-backoffice-net:
     driver: bridge
 

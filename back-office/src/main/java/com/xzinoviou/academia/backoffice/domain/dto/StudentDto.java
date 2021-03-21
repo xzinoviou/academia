@@ -1,6 +1,7 @@
 package com.xzinoviou.academia.backoffice.domain.dto;
 
-import lombok.Getter;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Data;
 
 import java.io.Serializable;
 import java.time.OffsetDateTime;
@@ -10,7 +11,7 @@ import java.time.OffsetDateTime;
  * Project : student-service.
  * Created on 21/3/21.
  */
-@Getter
+@Data
 public class StudentDto implements Serializable {
 
     private Long id;
@@ -23,7 +24,10 @@ public class StudentDto implements Serializable {
 
     private String email;
 
+
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSx")
     private OffsetDateTime birthDate;
 
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSx")
     private OffsetDateTime registrationDate;
 }

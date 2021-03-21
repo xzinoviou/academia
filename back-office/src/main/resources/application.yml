@@ -14,5 +14,5 @@ spring:
     timeout: 120
   cache:
     redis:
-      time-to-live: 2m
+      time-to-live: 1m
 

@@ -4,6 +4,7 @@ import com.xzinoviou.academia.resultservice.domain.jpa.Semester;
 import lombok.Data;
 import lombok.Getter;
 
+import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 
 /**
@@ -21,7 +22,7 @@ public class ResultUpdateRequest {
 
     private Long courseId;
 
-    private Double grade;
+    private BigDecimal grade;
 
     private OffsetDateTime examDate;
 

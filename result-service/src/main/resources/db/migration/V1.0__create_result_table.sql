@@ -1,9 +1,26 @@
-CREATE TABLE `result` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `course_id` bigint(20) DEFAULT NULL,
-  `exam_date` datetime(6) DEFAULT NULL,
-  `grade` double DEFAULT NULL,
-  `semester` varchar(255) DEFAULT NULL,
-  `student_id` bigint(20) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
+SET SCHEMA 'academia_result_schema';
+
+DROP TABLE IF EXISTS RESULT CASCADE;
+
+CREATE TABLE RESULT
+(
+    ID         bigint NOT NULL,
+    STUDENT_ID bigint NULL,
+    COURSE_ID  bigint NULL,
+    SEMESTER   varchar(255) NULL,
+    GRADE      numeric(10,4) NULL,
+    EXAM_DATE  timestamp with time zone NULL
+);
+
+ALTER TABLE RESULT ADD CONSTRAINT PK_RESULT PRIMARY KEY (ID);
+
+CREATE INDEX IX_RESULT_STUDENT_ID ON RESULT (STUDENT_ID ASC);
+
+CREATE INDEX IX_RESULT_COURSE_ID ON RESULT (COURSE_ID ASC);
+
+CREATE SEQUENCE RESULT_ID_SEQ
+    MINVALUE 1
+    START WITH 1
+    INCREMENT BY 1
+    CACHE 1
+;

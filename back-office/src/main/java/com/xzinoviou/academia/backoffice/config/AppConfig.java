@@ -1,17 +1,22 @@
-package com.xzinoviou.academia.courseservice.config;
+package com.xzinoviou.academia.backoffice.config;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 /**
  * Author : xzinoviou.
  * Project : student-service.
- * Created on 20/3/21.
+ * Created on 21/3/21.
  */
 @Configuration
 public class AppConfig {
@@ -26,4 +31,5 @@ public class AppConfig {
         objectMapper.configure(DeserializationFeature.ADJUST_DATES_TO_CONTEXT_TIME_ZONE, false);
         return objectMapper;
     }
+
 }

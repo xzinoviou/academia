@@ -7,26 +7,28 @@ logging:
         web: DEBUG
 
 spring:
-  #mysql
+  #postgres
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    username: dev
-    password: dev
-    url: jdbc:mysql://localhost:3303/academia_result_db
-    #?useSSL=false&allowPublicKeyRetrieval=false
-    #jpa -> hibernate
+    url: jdbc:postgresql://localhost:5435/academia-result-db
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
 
-  #jpa
+  #jpa properties
   jpa:
-    show-sql: true
     hibernate:
       ddl-auto: validate
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.MySQL8Dialect
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        default_schema: academia_result_schema
         format_sql: true
+    show-sql: true
 
+  #flyway properties
   flyway:
     enabled: true
-    password: dev
-    user: dev
+    password: postgres
+    schemas:
+      - academia_result_schema
+    table: flyway_schema_history
