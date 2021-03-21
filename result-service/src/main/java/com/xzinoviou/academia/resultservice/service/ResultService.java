@@ -21,4 +21,8 @@ public interface ResultService {
 
     Result saveResult(Result result);
 
+    Result updateResult(Result result);
+
+    String deleteResult(Long id);
+
 }

@@ -1,5 +1,6 @@
 package com.xzinoviou.academia.courseservice.management;
 
+import com.xzinoviou.academia.courseservice.domain.dto.CourseDto;
 import com.xzinoviou.academia.courseservice.domain.jpa.Course;
 import com.xzinoviou.academia.courseservice.domain.request.CourseCreateRequest;
 import com.xzinoviou.academia.courseservice.mapper.CourseMapper;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * Author : xzinoviou.
@@ -26,29 +28,33 @@ public class CourseManagementImpl implements CourseManagement {
     }
 
     @Override
-    public Course getCourseById(Long id) {
-        return courseService.getCourseById(id);
+    public CourseDto getCourseById(Long id) {
+        return courseMapper.mapToDto(
+                courseService.getCourseById(id)
+        );
     }
 
     @Override
-    public Course getCourseByCin(String cin) {
-        return courseService.getCourseByCin(cin);
+    public CourseDto getCourseByCin(String cin) {
+        return courseMapper.mapToDto(courseService.getCourseByCin(cin));
     }
 
     @Override
-    public List<Course> getAllCourses() {
-        return courseService.getAllCourses();
+    public List<CourseDto> getAllCourses() {
+        return courseService.getAllCourses().stream()
+                .map(courseMapper::mapToDto).collect(Collectors.toList());
     }
 
     @Override
-    public Course saveCourse(CourseCreateRequest request) {
+    public CourseDto saveCourse(CourseCreateRequest request) {
         Course course = courseMapper.convertToEntity(request);
         course.setCin("COU-" + courseService.getNextCourseIdSequencer());
-        return courseService.saveCourse(course);
+        return courseMapper.mapToDto(courseService.saveCourse(course));
     }
 
     @Override
-    public List<Course> getCoursesByIdIn(Set<Long> ids) {
-        return courseService.getCoursesByIdIn(ids);
+    public List<CourseDto> getCoursesByIdIn(Set<Long> ids) {
+        return courseService.getCoursesByIdIn(ids).stream()
+                .map(courseMapper::mapToDto).collect(Collectors.toList());
     }
 }

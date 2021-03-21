@@ -1,6 +1,6 @@
 package com.xzinoviou.academia.backoffice.controller;
 
-import com.xzinoviou.academia.backoffice.domain.model.Course;
+import com.xzinoviou.academia.backoffice.domain.dto.CourseDto;
 import com.xzinoviou.academia.backoffice.domain.request.course.CourseCreateRequest;
 import com.xzinoviou.academia.backoffice.feign.CourseClient;
 import org.springframework.http.HttpStatus;
@@ -25,22 +25,22 @@ public class CourseController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Course>> getAllCourses() {
+    public ResponseEntity<List<CourseDto>> getAllCourses() {
         return ResponseEntity.ok(courseClient.getAllCourses());
     }
 
     @GetMapping("/id/{id}")
-    public ResponseEntity<Course> getCourseById(@PathVariable("id") Long id) {
+    public ResponseEntity<CourseDto> getCourseById(@PathVariable("id") Long id) {
         return ResponseEntity.ok(courseClient.getCourseById(id));
     }
 
     @GetMapping("/cin/{cin}")
-    public ResponseEntity<Course> getCourseBySin(@PathVariable("cin") String sin) {
+    public ResponseEntity<CourseDto> getCourseBySin(@PathVariable("cin") String sin) {
         return ResponseEntity.ok(courseClient.getCourseByCin(sin));
     }
 
     @PostMapping
-    public ResponseEntity<Course> saveCourse(@RequestBody CourseCreateRequest request) {
+    public ResponseEntity<CourseDto> saveCourse(@RequestBody CourseCreateRequest request) {
         return new ResponseEntity<>(courseClient.saveCourse(request), HttpStatus.CREATED);
     }
 }

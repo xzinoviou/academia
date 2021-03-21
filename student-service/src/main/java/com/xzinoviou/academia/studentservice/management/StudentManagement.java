@@ -1,5 +1,6 @@
 package com.xzinoviou.academia.studentservice.management;
 
+import com.xzinoviou.academia.studentservice.domain.dto.StudentDto;
 import com.xzinoviou.academia.studentservice.domain.jpa.Student;
 import com.xzinoviou.academia.studentservice.domain.request.StudentCreateRequest;
 
@@ -12,11 +13,11 @@ import java.util.List;
  */
 public interface StudentManagement {
 
-    List<Student> getAllStudents();
+    List<StudentDto> getAllStudents();
 
-    Student getStudentById(Long id);
+    StudentDto getStudentById(Long id);
 
-    Student getStudentBySin(String sin);
+    StudentDto getStudentBySin(String sin);
 
-    Student saveStudent(StudentCreateRequest request);
+    StudentDto saveStudent(StudentCreateRequest request);
 }

@@ -1,6 +1,6 @@
 package com.xzinoviou.academia.backoffice.feign;
 
-import com.xzinoviou.academia.backoffice.domain.model.Course;
+import com.xzinoviou.academia.backoffice.domain.dto.CourseDto;
 import com.xzinoviou.academia.backoffice.domain.request.course.CourseCreateRequest;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,17 +20,17 @@ import java.util.Set;
 public interface CourseClient {
 
     @GetMapping
-    List<Course> getAllCourses();
+    List<CourseDto> getAllCourses();
 
     @GetMapping("/id/{id}")
-    Course getCourseById(@PathVariable("id") Long id);
+    CourseDto getCourseById(@PathVariable("id") Long id);
 
     @GetMapping("/cin/{cin}")
-    Course getCourseByCin(@PathVariable("cin") String cin);
+    CourseDto getCourseByCin(@PathVariable("cin") String cin);
 
     @PostMapping
-    Course saveCourse(@RequestBody CourseCreateRequest request);
+    CourseDto saveCourse(@RequestBody CourseCreateRequest request);
 
     @PostMapping("/search")
-    List<Course> getCoursesByIdIn(@RequestBody Set<Long> ids);
+    List<CourseDto> getCoursesByIdIn(@RequestBody Set<Long> ids);
 }

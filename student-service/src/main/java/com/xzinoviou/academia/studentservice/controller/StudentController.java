@@ -1,5 +1,6 @@
 package com.xzinoviou.academia.studentservice.controller;
 
+import com.xzinoviou.academia.studentservice.domain.dto.StudentDto;
 import com.xzinoviou.academia.studentservice.domain.jpa.Student;
 import com.xzinoviou.academia.studentservice.domain.request.StudentCreateRequest;
 import com.xzinoviou.academia.studentservice.management.StudentManagement;
@@ -18,30 +19,30 @@ import java.util.List;
 @RequestMapping("/students")
 public class StudentController {
 
-    private final StudentManagement studentManager;
+    private final StudentManagement studentManagement;
 
-    public StudentController(StudentManagement studentManager) {
-        this.studentManager = studentManager;
+    public StudentController(StudentManagement studentManagement) {
+        this.studentManagement = studentManagement;
     }
 
     @GetMapping
-    public ResponseEntity<List<Student>> getAllStudents() {
-        return ResponseEntity.ok(studentManager.getAllStudents());
+    public ResponseEntity<List<StudentDto>> getAllStudents() {
+        return ResponseEntity.ok(studentManagement.getAllStudents());
     }
 
     @GetMapping("/id/{id}")
-    public ResponseEntity<Student> getStudentById(@PathVariable("id") Long id) {
-        return ResponseEntity.ok(studentManager.getStudentById(id));
+    public ResponseEntity<StudentDto> getStudentById(@PathVariable("id") Long id) {
+        return ResponseEntity.ok(studentManagement.getStudentById(id));
     }
 
     @GetMapping("/sin/{sin}")
-    public ResponseEntity<Student> getStudentBySin(@PathVariable("sin") String sin) {
-        return ResponseEntity.ok(studentManager.getStudentBySin(sin));
+    public ResponseEntity<StudentDto> getStudentBySin(@PathVariable("sin") String sin) {
+        return ResponseEntity.ok(studentManagement.getStudentBySin(sin));
     }
 
     @PostMapping
-    public ResponseEntity<Student> saveStudent(@RequestBody StudentCreateRequest request) {
-        return new ResponseEntity<>(studentManager.saveStudent(request), HttpStatus.CREATED);
+    public ResponseEntity<StudentDto> saveStudent(@RequestBody StudentCreateRequest request) {
+        return new ResponseEntity<>(studentManagement.saveStudent(request), HttpStatus.CREATED);
     }
 
 }

@@ -1,16 +1,24 @@
-package com.xzinoviou.academia.resultservice.domain.model;
+package com.xzinoviou.academia.studentservice.domain.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
+import java.io.Serializable;
 import java.time.OffsetDateTime;
 
 /**
  * Author : xzinoviou.
  * Project : student-service.
- * Created on 20/3/21.
+ * Created on 21/3/21.
  */
 @Data
-public class Student {
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class StudentDto implements Serializable {
 
     private Long id;
 

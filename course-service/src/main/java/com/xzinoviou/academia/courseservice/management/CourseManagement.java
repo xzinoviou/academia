@@ -1,6 +1,6 @@
 package com.xzinoviou.academia.courseservice.management;
 
-import com.xzinoviou.academia.courseservice.domain.jpa.Course;
+import com.xzinoviou.academia.courseservice.domain.dto.CourseDto;
 import com.xzinoviou.academia.courseservice.domain.request.CourseCreateRequest;
 
 import java.util.List;
@@ -13,14 +13,14 @@ import java.util.Set;
  */
 public interface CourseManagement {
 
-    Course getCourseById(Long id);
+    CourseDto getCourseById(Long id);
 
-    Course getCourseByCin(String cin);
+    CourseDto getCourseByCin(String cin);
 
-    List<Course> getAllCourses();
+    List<CourseDto> getAllCourses();
 
-    Course saveCourse(CourseCreateRequest request);
+    CourseDto saveCourse(CourseCreateRequest request);
 
-    List<Course> getCoursesByIdIn(Set<Long> ids);
+    List<CourseDto> getCoursesByIdIn(Set<Long> ids);
 
 }

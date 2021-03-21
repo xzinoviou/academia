@@ -45,4 +45,19 @@ public class ResultServiceImpl implements ResultService {
     public Result saveResult(Result result) {
         return resultRepository.save(result);
     }
+
+    @Override
+    public Result updateResult(Result result) {
+        return resultRepository.save(result);
+    }
+
+    @Override
+    public String deleteResult(Long id) {
+        try{
+            resultRepository.delete(getResultById(id));
+            return "Result with id : " + id + " was successfully deleted";
+        } catch (Exception e){
+            throw new RuntimeException("Result Deletion failed for id : " + id );
+        }
+    }
 }

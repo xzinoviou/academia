@@ -1,12 +1,14 @@
 package com.xzinoviou.academia.resultservice.management;
 
-import com.xzinoviou.academia.resultservice.domain.jpa.Result;
-import com.xzinoviou.academia.resultservice.domain.request.result.ResultCreateRequest;
+import com.xzinoviou.academia.resultservice.domain.dto.ResultDto;
+import com.xzinoviou.academia.resultservice.domain.request.ResultCreateRequest;
+import com.xzinoviou.academia.resultservice.domain.request.ResultUpdateRequest;
 import com.xzinoviou.academia.resultservice.mapper.ResultMapper;
 import com.xzinoviou.academia.resultservice.service.ResultService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Author : xzinoviou.
@@ -25,28 +27,43 @@ public class ResultManagementImpl implements ResultManagement {
     }
 
     @Override
-    public Result getResultById(Long id) {
-        return resultService.getResultById(id);
+    public ResultDto getResultById(Long id) {
+        return resultMapper.mapToDto(resultService.getResultById(id));
     }
 
     @Override
-    public List<Result> getResultsByStudentId(Long studentId) {
-        return resultService.getResultsByStudentId(studentId);
+    public List<ResultDto> getResultsByStudentId(Long studentId) {
+        return resultService.getResultsByStudentId(studentId).stream()
+                .map(resultMapper::mapToDto).collect(Collectors.toList());
     }
 
     @Override
-    public List<Result> getResultsByCourseId(Long courseId) {
-        return resultService.getResultsByCourseId(courseId);
+    public List<ResultDto> getResultsByCourseId(Long courseId) {
+        return resultService.getResultsByCourseId(courseId).stream()
+                .map(resultMapper::mapToDto).collect(Collectors.toList());
     }
 
     @Override
-    public List<Result> getAllResults() {
-        return resultService.getAllResults();
+    public List<ResultDto> getAllResults() {
+        return resultService.getAllResults().stream()
+                .map(resultMapper::mapToDto).collect(Collectors.toList());
     }
 
     @Override
-    public Result saveResult(ResultCreateRequest request) {
-        return resultService.saveResult(
-                resultMapper.convertToEntity(request));
+    public ResultDto saveResult(ResultCreateRequest request) {
+        return resultMapper.mapToDto(resultService.saveResult(
+                resultMapper.convertToEntity(request)));
+    }
+
+    @Override
+    public ResultDto updateResult(ResultUpdateRequest request) {
+        return resultMapper.mapToDto(resultService.updateResult(
+                resultMapper.convertToEntity(request))
+        );
+    }
+
+    @Override
+    public String deleteResult(Long id) {
+        return resultService.deleteResult(id);
     }
 }

@@ -1,5 +1,6 @@
 package com.xzinoviou.academia.courseservice.mapper;
 
+import com.xzinoviou.academia.courseservice.domain.dto.CourseDto;
 import com.xzinoviou.academia.courseservice.domain.jpa.Course;
 import com.xzinoviou.academia.courseservice.domain.request.CourseCreateRequest;
 
@@ -11,4 +12,6 @@ import com.xzinoviou.academia.courseservice.domain.request.CourseCreateRequest;
 public interface CourseMapper {
 
     Course convertToEntity(CourseCreateRequest request);
+
+    CourseDto mapToDto(Course course);
 }

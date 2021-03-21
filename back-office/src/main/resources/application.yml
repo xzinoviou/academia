@@ -12,3 +12,7 @@ spring:
     host: localhost
     port: 6379
     timeout: 120
+  cache:
+    redis:
+      time-to-live: 2m
+

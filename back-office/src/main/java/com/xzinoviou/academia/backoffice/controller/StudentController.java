@@ -1,6 +1,6 @@
 package com.xzinoviou.academia.backoffice.controller;
 
-import com.xzinoviou.academia.backoffice.domain.model.Student;
+import com.xzinoviou.academia.backoffice.domain.dto.StudentDto;
 import com.xzinoviou.academia.backoffice.domain.request.student.StudentCreateRequest;
 import com.xzinoviou.academia.backoffice.feign.StudentClient;
 import org.springframework.http.HttpStatus;
@@ -25,22 +25,22 @@ public class StudentController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Student>> getAllStudents() {
+    public ResponseEntity<List<StudentDto>> getAllStudents() {
         return ResponseEntity.ok(studentClient.getAllStudents());
     }
 
     @GetMapping("/id/{id}")
-    public ResponseEntity<Student> getStudentById(@PathVariable("id") Long id) {
+    public ResponseEntity<StudentDto> getStudentById(@PathVariable("id") Long id) {
         return ResponseEntity.ok(studentClient.getStudentById(id));
     }
 
     @GetMapping("/sin/{sin}")
-    public ResponseEntity<Student> getStudentBySin(@PathVariable("sin") String sin) {
+    public ResponseEntity<StudentDto> getStudentBySin(@PathVariable("sin") String sin) {
         return ResponseEntity.ok(studentClient.getStudentBySin(sin));
     }
 
     @PostMapping
-    public ResponseEntity<Student> saveStudent(@RequestBody StudentCreateRequest request) {
+    public ResponseEntity<StudentDto> saveStudent(@RequestBody StudentCreateRequest request) {
         return new ResponseEntity<>(studentClient.saveStudent(request), HttpStatus.CREATED);
     }
 }

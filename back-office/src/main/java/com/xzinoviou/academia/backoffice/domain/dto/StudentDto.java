@@ -1,16 +1,17 @@
-package com.xzinoviou.academia.backoffice.domain.model;
+package com.xzinoviou.academia.backoffice.domain.dto;
 
-import lombok.Data;
+import lombok.Getter;
 
+import java.io.Serializable;
 import java.time.OffsetDateTime;
 
 /**
  * Author : xzinoviou.
  * Project : student-service.
- * Created on 20/3/21.
+ * Created on 21/3/21.
  */
-@Data
-public class Student {
+@Getter
+public class StudentDto implements Serializable {
 
     private Long id;
 

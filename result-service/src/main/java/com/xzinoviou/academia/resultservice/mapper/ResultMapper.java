@@ -1,7 +1,9 @@
 package com.xzinoviou.academia.resultservice.mapper;
 
+import com.xzinoviou.academia.resultservice.domain.dto.ResultDto;
 import com.xzinoviou.academia.resultservice.domain.jpa.Result;
-import com.xzinoviou.academia.resultservice.domain.request.result.ResultCreateRequest;
+import com.xzinoviou.academia.resultservice.domain.request.ResultCreateRequest;
+import com.xzinoviou.academia.resultservice.domain.request.ResultUpdateRequest;
 
 /**
  * Author : xzinoviou.
@@ -11,4 +13,8 @@ import com.xzinoviou.academia.resultservice.domain.request.result.ResultCreateRe
 public interface ResultMapper {
 
     Result convertToEntity(ResultCreateRequest request);
+
+    Result convertToEntity(ResultUpdateRequest request);
+
+    ResultDto mapToDto(Result result);
 }

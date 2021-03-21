@@ -7,6 +7,7 @@ import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
 
+
 /**
  * Author : xzinoviou.
  * Project : student-service.
@@ -15,18 +16,18 @@ import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSeriali
 @Configuration
 public class RedisConfig {
 
-    @Bean
-    JedisConnectionFactory jedisConnectionFactory() {
-        RedisStandaloneConfiguration redisStandaloneConfiguration =
-                new RedisStandaloneConfiguration("localhost", 6379);
-        return new JedisConnectionFactory(redisStandaloneConfiguration);
-    }
-
-    @Bean
-    RedisTemplate<String, Object> redisTemplate() {
-        RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();
-        redisTemplate.setConnectionFactory(jedisConnectionFactory());
-        redisTemplate.setValueSerializer(new GenericJackson2JsonRedisSerializer());
-        return redisTemplate;
-    }
+//    @Bean
+//    JedisConnectionFactory jedisConnectionFactory() {
+//        RedisStandaloneConfiguration redisStandaloneConfiguration =
+//                new RedisStandaloneConfiguration();
+//        return new JedisConnectionFactory(redisStandaloneConfiguration);
+//    }
+//
+//    @Bean
+//    RedisTemplate<String, Object> redisTemplate() {
+//        RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();
+//        redisTemplate.setConnectionFactory(jedisConnectionFactory());
+//        redisTemplate.setValueSerializer(new GenericJackson2JsonRedisSerializer());
+//        return redisTemplate;
+//    }
 }

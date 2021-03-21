@@ -1,16 +1,19 @@
-package com.xzinoviou.academia.backoffice.domain.model;
+package com.xzinoviou.academia.resultservice.domain.request;
 
+import com.xzinoviou.academia.resultservice.domain.jpa.Semester;
 import lombok.Data;
+import lombok.Getter;
 
 import java.time.OffsetDateTime;
 
 /**
  * Author : xzinoviou.
  * Project : student-service.
- * Created on 20/3/21.
+ * Created on 21/3/21.
  */
 @Data
-public class Result {
+@Getter
+public class ResultUpdateRequest {
 
     private Long id;
 
@@ -23,5 +26,6 @@ public class Result {
     private OffsetDateTime examDate;
 
     private Semester semester;
+
 
 }

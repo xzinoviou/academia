@@ -1,19 +1,19 @@
-package com.xzinoviou.academia.resultservice.domain.request.result;
+package com.xzinoviou.academia.backoffice.domain.dto;
 
-import com.xzinoviou.academia.resultservice.domain.jpa.Semester;
-import lombok.Data;
-import lombok.Getter;
+import com.xzinoviou.academia.backoffice.domain.model.Semester;
+import lombok.*;
 
 import java.time.OffsetDateTime;
 
 /**
  * Author : xzinoviou.
  * Project : student-service.
- * Created on 20/3/21.
+ * Created on 21/3/21.
  */
-@Data
 @Getter
-public class ResultCreateRequest {
+public class ResultDto {
+
+    private Long id;
 
     private Long studentId;
 

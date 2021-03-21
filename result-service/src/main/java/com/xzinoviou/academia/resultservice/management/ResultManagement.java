@@ -1,7 +1,8 @@
 package com.xzinoviou.academia.resultservice.management;
 
-import com.xzinoviou.academia.resultservice.domain.jpa.Result;
-import com.xzinoviou.academia.resultservice.domain.request.result.ResultCreateRequest;
+import com.xzinoviou.academia.resultservice.domain.dto.ResultDto;
+import com.xzinoviou.academia.resultservice.domain.request.ResultCreateRequest;
+import com.xzinoviou.academia.resultservice.domain.request.ResultUpdateRequest;
 
 import java.util.List;
 
@@ -12,13 +13,17 @@ import java.util.List;
  */
 public interface ResultManagement {
 
-    Result getResultById(Long id);
+    ResultDto getResultById(Long id);
 
-    List<Result> getResultsByStudentId(Long studentId);
+    List<ResultDto> getResultsByStudentId(Long studentId);
 
-    List<Result> getResultsByCourseId(Long courseId);
+    List<ResultDto> getResultsByCourseId(Long courseId);
 
-    List<Result> getAllResults();
+    List<ResultDto> getAllResults();
 
-    Result saveResult(ResultCreateRequest request);
+    ResultDto saveResult(ResultCreateRequest request);
+
+    ResultDto updateResult(ResultUpdateRequest request);
+
+    String deleteResult(Long id);
 }

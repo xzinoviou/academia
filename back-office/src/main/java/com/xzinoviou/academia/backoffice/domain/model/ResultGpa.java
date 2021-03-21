@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 /**
  * Author : xzinoviou.
  * Project : student-service.
@@ -14,7 +16,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ResultGpa {
+public class ResultGpa implements Serializable {
 
     private String firstName;
     private String lastName;
