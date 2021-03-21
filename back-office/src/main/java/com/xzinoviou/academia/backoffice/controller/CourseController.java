@@ -35,8 +35,8 @@ public class CourseController {
     }
 
     @GetMapping("/cin/{cin}")
-    public ResponseEntity<CourseDto> getCourseBySin(@PathVariable("cin") String sin) {
-        return ResponseEntity.ok(courseClient.getCourseByCin(sin));
+    public ResponseEntity<CourseDto> getCourseByCin(@PathVariable("cin") String cin) {
+        return ResponseEntity.ok(courseClient.getCourseByCin(cin));
     }
 
     @PostMapping
